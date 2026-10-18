@@ -1,19 +1,33 @@
 public class MenuItem{
-    int prep_time;
+    int prepTime;
     double price;
     String name;
 
-    public MenuItem(int prep_time, double price, String name){
-        this.prep_time  =prep_time;
+    public MenuItem(int prepTime, double price, String name){
+        this.prepTime = prepTime;
         this.price = price;
         this.name = name;
     }
 
-    public void prepare(){
-        this.prep_time -= 1;
+    public MenuItem(MenuItem copy) {
+        this.name = copy.name;
+        this.price = copy.price;
+        this.prepTime = copy.prepTime;
+    }
+
+    public int getPrep(){
+        return this.prepTime;
     }
 
     public double getPrice(){
         return this.price;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public void prepare(){
+        this.prepTime -= 1;
     }
 }

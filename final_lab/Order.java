@@ -1,8 +1,10 @@
 public class Order{
     MenuItem[] ItemList;
+    boolean completed;
 
     public Order(MenuItem[] currOrder){
         this.ItemList = currOrder;
+        this.completed = false;
     }
 
     public void checkCleared(){}

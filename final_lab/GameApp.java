@@ -1,33 +1,36 @@
 
-
 class GameApp{
-    static final Waiter waiter;
-    static final Chef chef;
-    static final MenuItem[] menu;
-    static int currTurn = 0;
-    static int[] CustomerTurn = {1,4,7,10,13,16};
+    static final Waiter waiter = new Waiter();;
+    static final Chef chef = new Chef();
+    static final Player p1 = new Player();
 
-    static {
-        waiter = new Waiter();
-        chef = new Chef();
-        menu = new MenuItem[3]; 
-    }
+    static final MenuItem[] menu = new MenuItem[3];
+    static final DinningArea diningArea = new DinningArea(6,6,menu);
+
+    static int currTurn = 0;
+    static final int[] CustomerTurn = {1,4,7,10,13,16};
+    static int customersEntered = 0;
 
     public static void nextTurn() {
-        if (currTurn == CustomerTurn[0]){
-
+        if (currTurn == CustomerTurn[customersEntered]){
+            Customer newCustomer = new Customer();
+            diningArea.enqueue(newCustomer);
+            customersEntered ++;
         }
-
+        p1.WaiterOptions(waiter,diningArea);
+        p1.chefOptions();
+        currTurn ++;
     }
 
     public static void createMenu() {
-        menu[0] = new MenuItem(1, 8.0, "food");
-        menu[1] = new MenuItem(1,8.0,"food");
-        menu[2] = new MenuItem(1,8.0,"food");
+        menu[0] = new MenuItem(1, 9.0, "Salad");
+        menu[1] = new MenuItem(1,15.0,"Burger");
+        menu[2] = new MenuItem(2,18.0,"Pasta");
     }
 
     public static void main(String[] args) {
         createMenu();
+
 
     }
 }
