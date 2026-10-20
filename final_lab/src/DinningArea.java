@@ -25,9 +25,13 @@ public class DinningArea{
         this.seats[seatID] = queue[0];
         System.arraycopy(queue, 1, queue, 0, queueLength - 1);
         queue[--queueLength] = null;   // clear the last slot
+        seatsAvailable -= 1;
     }
 
     public void nextTurn(){
+        for (Customer curCustomer: seats){
+            curCustomer.nextTurn();
+        }
     }
 
     public Customer[] getSeats(){

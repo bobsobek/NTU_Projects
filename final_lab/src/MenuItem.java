@@ -30,4 +30,10 @@ public class MenuItem{
     public void prepare(){
         this.prepTime -= 1;
     }
+
+    @Override
+    public String toString(){
+        return this.name + '|' +this.price + '|' + this.prepTime + '\n';
+    }
+
 }

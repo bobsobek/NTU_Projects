@@ -1,13 +1,14 @@
 
 class GameApp{
-    static final Waiter waiter = new Waiter();;
-    static final Chef chef = new Chef();
-    static final Player p1 = new Player();
-
     static final MenuItem[] menu = new MenuItem[3];
     static final DinningArea diningArea = new DinningArea(6,6,menu);
 
-    static int currTurn = 0;
+    static final Waiter waiter = new Waiter(diningArea);;
+    static final Chef chef = new Chef(diningArea);
+
+    static int currTurn = 1;
+    static final int maxTurn = 18;
+
     static final int[] CustomerTurn = {1,4,7,10,13,16};
     static int customersEntered = 0;
 
@@ -17,8 +18,8 @@ class GameApp{
             diningArea.enqueue(newCustomer);
             customersEntered ++;
         }
-        p1.WaiterOptions(waiter,diningArea);
-        p1.chefOptions();
+        waiter.WaiterOptions();
+        chef.chefOptions();
         currTurn ++;
     }
 
@@ -30,7 +31,6 @@ class GameApp{
 
     public static void main(String[] args) {
         createMenu();
-
-
+        for (;currTurn < maxTurn; currTurn ++) nextTurn();
     }
 }

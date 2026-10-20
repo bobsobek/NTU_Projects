@@ -1,13 +1,13 @@
 public class Order{
     MenuItem[] ItemList;
-    boolean completed;
+    boolean completed  = false;
 
     public Order(MenuItem[] currOrder){
         this.ItemList = currOrder;
         this.completed = false;
     }
 
-    public void checkCleared(){}
+    public boolean getCompleted(){ return this.completed;}
 
     public void prepare(){}
 
@@ -17,5 +17,11 @@ public class Order{
             total += item.getPrice();
         }
         return total;
+    }
+
+    public void printOrder(){
+        for (MenuItem item: this.ItemList){
+            System.out.print(item.toString());
+        }
     }
 }
